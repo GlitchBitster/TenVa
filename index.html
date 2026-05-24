@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TanVi | Crystal Ornaments</title>
+    <meta name="description" content="Handpicked crystal ornaments — rings, bracelets, necklaces & healing stones.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --color-bg: #0D0D14;
+            --color-primary: #7B2FBE;
+            --color-primary-light: #9d5de0;
+            --color-accent: #D4AF7A;
+            --color-text: #F2F2F5;
+            --color-text-muted: #A0A0A8;
+            --color-glass: rgba(255, 255, 255, 0.03);
+            --color-glass-border: rgba(123, 47, 190, 0.2);
+            --color-glass-hover: rgba(123, 47, 190, 0.4);
+
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            cursor: none;
+            /* Custom cursor */
+        }
+
+        a,
+        button {
+            cursor: none;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .brand-logo {
+            font-family: var(--font-display);
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        /* Custom Cursor */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--color-primary-light);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 15px 5px rgba(157, 93, 224, 0.6);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        .cursor-dot.hover {
+            width: 24px;
+            height: 24px;
+            background-color: rgba(212, 175, 122, 0.3);
+            box-shadow: 0 0 20px 5px rgba(212, 175, 122, 0.4);
+            border: 1px solid var(--color-accent);
+        }
+
+        /* Background Effects */
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+            animation: grain 8s steps(10) infinite;
+        }
+
+        @keyframes grain {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            10% {
+                transform: translate(-5%, -10%);
+            }
+
+            20% {
+                transform: translate(-15%, 5%);
+            }
+
+            30% {
+                transform: translate(7%, -25%);
+            }
+
+            40% {
+                transform: translate(-5%, 25%);
+            }
+
+            50% {
+                transform: translate(-15%, 10%);
+            }
+
+            60% {
+                transform: translate(15%, 0%);
+            }
+
+            70% {
+                transform: translate(0%, 15%);
+            }
+
+            80% {
+                transform: translate(3%, 35%);
+            }
+
+            90% {
+                transform: translate(-10%, 10%);
+            }
+        }
+
+        .glow-bg {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            height: 80vw;
+            max-width: 800px;
+            max-height: 800px;
+            background: radial-gradient(circle, rgba(123, 47, 190, 0.15) 0%, rgba(13, 13, 20, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(80px);
+        }
+
+        .glow-bg-2 {
+            position: absolute;
+            bottom: -10%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 122, 0.08) 0%, rgba(13, 13, 20, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(60px);
+        }
+
+        /* Glassmorphism Utilities */
+        .glass {
+            background: var(--color-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--color-glass-border);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: var(--transition-smooth);
+        }
+
+        .navbar.scrolled {
+            padding: 1rem 5%;
+            background: rgba(13, 13, 20, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--color-glass-border);
+        }
+
+        .brand-logo {
+            font-size: 2rem;
+            color: var(--color-text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-logo svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                /* Hide on mobile for simplicity, or implement a hamburger menu */
+            }
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--color-accent);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .wishlist-btn {
+            background: none;
+            border: none;
+            color: var(--color-text);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .wishlist-btn:hover {
+            color: var(--color-primary-light);
+        }
+
+        .wishlist-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--color-primary);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: var(--font-body);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--color-text), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            z-index: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border: 1px solid var(--color-primary);
+            border-radius: 30px;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--color-primary), var(--color-primary-light));
+            z-index: -1;
+            transition: var(--transition-smooth);
+            opacity: 0;
+        }
+
+        .btn:hover {
+            border-color: transparent;
+            box-shadow: 0 0 20px rgba(123, 47, 190, 0.5);
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+        }
+
+        /* Sections General */
+        section {
+            padding: 8rem 5%;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Collections */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: none;
+            border: 1px solid var(--color-glass-border);
+            color: var(--color-text-muted);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .product-card {
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            border-color: var(--color-glass-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(123, 47, 190, 0.2);
+        }
+
+        .product-image-container {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image-placeholder {
+            width: 60%;
+            height: 60%;
+            fill: rgba(255, 255, 255, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .product-card:hover .product-image-placeholder {
+            fill: rgba(212, 175, 122, 0.3);
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            color: var(--color-text);
+        }
+
+        .product-price {
+            font-family: var(--font-body);
+            color: var(--color-accent);
+            font-weight: 500;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .btn-wa {
+            flex-grow: 1;
+            padding: 0.8rem;
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            color: #25D366;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-wa:hover {
+            background: rgba(37, 211, 102, 0.2);
+            border-color: #25D366;
+        }
+
+        .btn-wishlist {
+            background: none;
+            border: 1px solid var(--color-glass-border);
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-text-muted);
+            transition: var(--transition-smooth);
+        }
+
+        .btn-wishlist:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .btn-wishlist.active {
+            color: #ff4757;
+            border-color: #ff4757;
+        }
+
+        /* Wishlist Drawer */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-smooth);
+        }
+
+        .drawer-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .wishlist-drawer {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--color-bg);
+            border-left: 1px solid var(--color-glass-border);
+            z-index: 1001;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .wishlist-drawer.active {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-glass-border);
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: var(--color-text);
+            font-size: 1.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .drawer-close:hover {
+            color: var(--color-accent);
+        }
+
+        .wishlist-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .wishlist-items::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .wishlist-items::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .wishlist-items::-webkit-scrollbar-thumb {
+            background: var(--color-glass-border);
+            border-radius: 10px;
+        }
+
+        .wishlist-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--color-glass-border);
+        }
+
+        .wishlist-item-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wishlist-item-img svg {
+            width: 30px;
+            height: 30px;
+            fill: rgba(255, 255, 255, 0.2);
+        }
+
+        .wishlist-item-info {
+            flex-grow: 1;
+        }
+
+        .wishlist-item-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+        }
+
+        .wishlist-item-price {
+            color: var(--color-accent);
+            font-size: 0.9rem;
+        }
+
+        .wishlist-item-remove {
+            background: none;
+            border: none;
+            color: var(--color-text-muted);
+            transition: var(--transition-smooth);
+        }
+
+        .wishlist-item-remove:hover {
+            color: #ff4757;
+        }
+
+        .drawer-footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-glass-border);
+        }
+
+        .empty-wishlist {
+            text-align: center;
+            color: var(--color-text-muted);
+            margin-top: 2rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about-decorative {
+            width: 100%;
+            aspect-ratio: 4/5;
+            border-radius: 20px;
+            background: linear-gradient(45deg, rgba(123, 47, 190, 0.1), rgba(212, 175, 122, 0.1));
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid var(--color-glass-border);
+            overflow: hidden;
+        }
+
+        .about-decorative::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(123, 47, 190, 0.3) 0%, transparent 60%);
+            animation: rotateGlow 10s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .about-decorative svg {
+            width: 40%;
+            height: 40%;
+            fill: var(--color-accent);
+            z-index: 1;
+            opacity: 0.8;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary-light);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+        }
+
+        .contact-box p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+        }
+
+        .contact-info {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .contact-info p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--color-glass-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-accent);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-text);
+        }
+
+        .footer-bottom {
+            width: 100%;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Icons */
+        svg {
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SVG Definitions for reuse -->
+    <svg style="display: none;">
+        <symbol id="icon-crystal" viewBox="0 0 24 24">
+            <path d="M12 2L2 12l10 10 10-10L12 2zm0 3.83L18.17 12 12 18.17 5.83 12 12 5.83z" />
+        </symbol>
+        <symbol id="icon-heart" viewBox="0 0 24 24">
+            <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </symbol>
+        <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </symbol>
+        <symbol id="icon-close" viewBox="0 0 24 24">
+            <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+        </symbol>
+        <symbol id="icon-trash" viewBox="0 0 24 24">
+            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+        </symbol>
+    </svg>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Effects -->
+    <div class="grain-overlay"></div>
+    <div class="glow-bg"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="brand-logo">
+            <svg>
+                <use href="#icon-crystal"></use>
+            </svg>
+            TanVi
+        </a>
+        <ul class="nav-links">
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="wishlist-btn" id="wishlistBtn">
+            <svg width="24" height="24" fill="currentColor">
+                <use href="#icon-heart"></use>
+            </svg>
+            <span class="wishlist-badge" id="wishlistBadge">0</span>
+        </button>
+    </nav>
+
+    <!-- Wishlist Drawer -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="wishlist-drawer" id="wishlistDrawer">
+        <div class="drawer-header">
+            <h3>Your Wishlist</h3>
+            <button class="drawer-close" id="drawerClose">
+                <svg width="24" height="24" fill="currentColor">
+                    <use href="#icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <!-- Items injected by JS -->
+        </div>
+        <div class="drawer-footer">
+            <a href="#" class="btn btn-wa" style="width: 100%;" id="orderAllBtn">
+                <svg width="20" height="20" fill="currentColor" style="vertical-align: middle; margin-right: 8px;">
+                    <use href="#icon-whatsapp"></use>
+                </svg>
+                Order All via WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <header class="hero">
+        <h1 class="fade-in">Where Crystal<br>Meets Soul</h1>
+        <p class="fade-in" style="transition-delay: 0.2s;">Handpicked crystal ornaments — rings, bracelets, necklaces &
+            healing stones, curated for energy and elegance.</p>
+        <a href="#collections" class="btn fade-in" style="transition-delay: 0.4s;">Explore Collection</a>
+        <div class="glow-bg-2"></div>
+    </header>
+
+    <!-- Collections -->
+    <section id="collections">
+        <div class="section-header fade-in">
+            <h2>Our Collections</h2>
+        </div>
+
+        <div class="filters fade-in">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Rings">Rings</button>
+            <button class="filter-btn" data-filter="Bracelets">Bracelets</button>
+            <button class="filter-btn" data-filter="Necklaces">Necklaces</button>
+            <button class="filter-btn" data-filter="Stones">Stones</button>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+            <!-- Rendered by JS -->
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="section-header fade-in">
+            <h2>The TanVi Story</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-decorative fade-in">
+                <svg>
+                    <use href="#icon-crystal"></use>
+                </svg>
+            </div>
+            <div class="about-text fade-in" style="transition-delay: 0.2s;">
+                <h3>Crafted with Intention</h3>
+                <p>TanVi represents a curated collection of natural crystals believed to carry energy, beauty, and
+                    intention. Sourced from the finest origins and crafted into elegant ornaments, each piece is unique.
+                </p>
+                <p>We believe in the power of refined maximalism — where the natural raw beauty of crystals meets royal
+                    opulence. Our designs are made for those who appreciate the mystical and the beautiful, adding a
+                    touch of magic to everyday wear.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="section-header fade-in">
+            <h2>Get in Touch</h2>
+        </div>
+        <div class="contact-box glass fade-in">
+            <p>For custom orders, bulk enquiries, or anything else — we'd love to hear from you. Reach out to us
+                directly on WhatsApp for a personalized experience.</p>
+            <a href="https://wa.me/919999999999?text=Hi!%20I'm%20interested%20in%20knowing%20more%20about%20TanVi."
+                target="_blank" class="btn btn-wa" style="display: inline-block; padding: 1rem 3rem;">
+                <svg width="24" height="24" fill="currentColor" style="vertical-align: middle; margin-right: 8px;">
+                    <use href="#icon-whatsapp"></use>
+                </svg>
+                Chat with Us on WhatsApp
+            </a>
+
+            <div class="contact-info">
+                <p>Email: hello@tanvi.com</p>
+                <p>Instagram: @tanvi.crystals</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-brand">TanVi — Crystal Ornaments</div>
+        <div class="footer-links">
+            <a href="#collections">Collections</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 TanVi. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Data
+        const products = [
+            { id: 1, name: "Amethyst Crown Ring", category: "Rings", price: 3499, description: "Deep purple amethyst set in soft gold." },
+            { id: 2, name: "Rose Quartz Aura Bracelet", category: "Bracelets", price: 2199, description: "Gentle pink stones for love and harmony." },
+            { id: 3, name: "Clear Quartz Pendant", category: "Necklaces", price: 4299, description: "Master healer crystal on an elegant chain." },
+            { id: 4, name: "Raw Citrine Cluster", category: "Stones", price: 1599, description: "Natural golden citrine for abundance." },
+            { id: 5, name: "Moonstone Elixir Ring", category: "Rings", price: 2899, description: "Iridescent moonstone with magical glow." },
+            { id: 6, name: "Tiger's Eye Power Band", category: "Bracelets", price: 1899, description: "Protective stone for focus and strength." },
+            { id: 7, name: "Lapis Lazuli Choker", category: "Necklaces", price: 3899, description: "Deep blue stone of wisdom and truth." },
+            { id: 8, name: "Polished Fluorite Wand", category: "Stones", price: 2499, description: "Multicolor fluorite for mental clarity." },
+            { id: 9, name: "Labradorite Statement Ring", category: "Rings", price: 3699, description: "Mystical flashes of blue and green." }
+        ];
+
+        const WHATSAPP_NUMBER = "919999999999"; // Placeholder
+
+        // State
+        let wishlist = JSON.parse(localStorage.getItem('tanvi_wishlist')) || [];
+        let currentFilter = 'all';
+
+        // DOM Elements
+        const cursorDot = document.getElementById('cursorDot');
+        const navbar = document.getElementById('navbar');
+        const productGrid = document.getElementById('productGrid');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const wishlistBtn = document.getElementById('wishlistBtn');
+        const wishlistBadge = document.getElementById('wishlistBadge');
+        const wishlistDrawer = document.getElementById('wishlistDrawer');
+        const drawerOverlay = document.getElementById('drawerOverlay');
+        const drawerClose = document.getElementById('drawerClose');
+        const wishlistItemsContainer = document.getElementById('wishlistItems');
+        const orderAllBtn = document.getElementById('orderAllBtn');
+
+        // Custom Cursor Logic
+        document.addEventListener('mousemove', (e) => {
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button, .product-card').forEach(el => {
+            el.addEventListener('mouseenter', () => cursorDot.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursorDot.classList.remove('hover'));
+        });
+
+        // Navbar Scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Animations (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Format Price
+        const formatPrice = (price) => {
+            return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(price);
+        };
+
+        // Render Products
+        const renderProducts = () => {
+            const filteredProducts = currentFilter === 'all'
+                ? products
+                : products.filter(p => p.category === currentFilter);
+
+            productGrid.innerHTML = '';
+
+            filteredProducts.forEach((product, index) => {
+                const isWishlisted = wishlist.some(item => item.id === product.id);
+                const delay = (index % 3) * 0.1; // Staggered animation
+
+                const card = document.createElement('div');
+                card.className = 'product-card glass fade-in visible'; // visible by default if already in view, handled by CSS mostly
+                card.style.animationDelay = `${delay}s`;
+
+                card.innerHTML = `
+                    <div class="product-image-container">
+                        <svg class="product-image-placeholder" viewBox="0 0 24 24"><use href="#icon-crystal"></use></svg>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3 class="product-title">${product.name}</h3>
+                            <span class="product-price">${formatPrice(product.price)}</span>
+                        </div>
+                        <p class="product-desc">${product.description}</p>
+                        <div class="product-actions">
+                            <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hi! I'm interested in the ${product.name}.`)}" target="_blank" class="btn-wa">Order via WhatsApp</a>
+                            <button class="btn-wishlist ${isWishlisted ? 'active' : ''}" data-id="${product.id}" aria-label="Toggle Wishlist">
+                                <svg width="24" height="24" fill="currentColor"><use href="#icon-heart"></use></svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                productGrid.appendChild(card);
+            });
+
+            // Re-bind hover events for new elements
+            document.querySelectorAll('.product-card, .btn-wa, .btn-wishlist').forEach(el => {
+                el.addEventListener('mouseenter', () => cursorDot.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursorDot.classList.remove('hover'));
+            });
+
+            // Bind wishlist toggle buttons
+            document.querySelectorAll('.btn-wishlist').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.currentTarget.getAttribute('data-id'));
+                    toggleWishlist(id, e.currentTarget);
+                });
+            });
+        };
+
+        // Filtering Logic
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentFilter = e.target.getAttribute('data-filter');
+                renderProducts();
+            });
+        });
+
+        // Wishlist Logic
+        const updateWishlistUI = () => {
+            wishlistBadge.textContent = wishlist.length;
+
+            if (wishlist.length === 0) {
+                wishlistItemsContainer.innerHTML = '<p class="empty-wishlist">Your wishlist is empty.</p>';
+                orderAllBtn.style.display = 'none';
+                return;
+            }
+
+            orderAllBtn.style.display = 'inline-block';
+            wishlistItemsContainer.innerHTML = '';
+
+            let allItemsText = "Hi! I'm interested in ordering the following items:\n\n";
+
+            wishlist.forEach(item => {
+                allItemsText += `- ${item.name} (${formatPrice(item.price)})\n`;
+
+                const el = document.createElement('div');
+                el.className = 'wishlist-item';
+                el.innerHTML = `
+                    <div class="wishlist-item-img">
+                        <svg><use href="#icon-crystal"></use></svg>
+                    </div>
+                    <div class="wishlist-item-info">
+                        <div class="wishlist-item-title">${item.name}</div>
+                        <div class="wishlist-item-price">${formatPrice(item.price)}</div>
+                    </div>
+                    <button class="wishlist-item-remove" data-id="${item.id}">
+                        <svg width="20" height="20" fill="currentColor"><use href="#icon-trash"></use></svg>
+                    </button>
+                `;
+                wishlistItemsContainer.appendChild(el);
+            });
+
+            // Update WhatsApp Order All Link
+            orderAllBtn.href = `https://wa.me/+916381490544?text=${encodeURIComponent(allItemsText)}`;
+
+            // Bind remove buttons
+            document.querySelectorAll('.wishlist-item-remove').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.currentTarget.getAttribute('data-id'));
+                    toggleWishlist(id);
+                });
+            });
+        };
+
+        const toggleWishlist = (id, btnElement = null) => {
+            const index = wishlist.findIndex(item => item.id === id);
+
+            if (index > -1) {
+                // Remove
+                wishlist.splice(index, 1);
+                if (btnElement) btnElement.classList.remove('active');
+            } else {
+                // Add
+                const product = products.find(p => p.id === id);
+                if (product) {
+                    wishlist.push(product);
+                    if (btnElement) btnElement.classList.add('active');
+                }
+            }
+
+            localStorage.setItem('tanvi_wishlist', JSON.stringify(wishlist));
+            updateWishlistUI();
+
+            // Sync product grid icons if removing from drawer
+            if (!btnElement) {
+                const gridBtn = document.querySelector(`.btn-wishlist[data-id="${id}"]`);
+                if (gridBtn) gridBtn.classList.remove('active');
+            }
+        };
+
+        // Drawer Toggle Logic
+        const toggleDrawer = () => {
+            wishlistDrawer.classList.toggle('active');
+            drawerOverlay.classList.toggle('active');
+        };
+
+        wishlistBtn.addEventListener('click', toggleDrawer);
+        drawerClose.addEventListener('click', toggleDrawer);
+        drawerOverlay.addEventListener('click', toggleDrawer);
+
+        // Init
+        renderProducts();
+        updateWishlistUI();
+    </script>
+</body>
+
+</html>
