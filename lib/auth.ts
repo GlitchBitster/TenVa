@@ -96,10 +96,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           if (!user) {
             // Register new user via mobile OTP
             // We need a dummy or temporary email since email is unique and required in our Schema
-            const tempEmail = `phone_${target.replace("+", "")}@tanvi.com`;
+            const tempEmail = `phone_${target.replace("+", "")}@tenva.com`;
             // Check if email already exists (edge case)
             const emailExists = await User.findOne({ email: tempEmail });
-            const finalEmail = emailExists ? `phone_${target.replace("+", "")}_${Date.now()}@tanvi.com` : tempEmail;
+            const finalEmail = emailExists ? `phone_${target.replace("+", "")}_${Date.now()}@tenva.com` : tempEmail;
 
             user = await User.create({
               fullName: (credentials.fullName as string) || `User ${target.slice(-4)}`,

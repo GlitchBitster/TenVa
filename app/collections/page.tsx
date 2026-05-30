@@ -109,7 +109,7 @@ function CollectionsContent() {
       <main className="min-h-screen pt-28 pb-20 px-6 md:px-12 max-w-7xl mx-auto space-y-8">
         {/* Banner Title */}
         <div className="space-y-2">
-          <span className="text-[10px] tracking-widest uppercase text-accent font-semibold">TanVi Catalog</span>
+          <span className="text-[10px] tracking-widest uppercase text-accent font-semibold">TenVa Catalog</span>
           <h1 className="font-cormorant text-4xl md:text-6xl text-text-ivory font-medium capitalize">
             {activeCategory === "all" ? "Our Collections" : `${activeCategory}s`}
           </h1>

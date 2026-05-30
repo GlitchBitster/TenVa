@@ -78,7 +78,7 @@ function SignUpContent() {
         toast.error("Failed to automatically sign in");
         router.push("/signin");
       } else {
-        toast.success("Welcome to TanVi!");
+        toast.success("Welcome to TenVa!");
         router.push(callbackUrl);
         router.refresh();
       }
@@ -105,10 +105,10 @@ function SignUpContent() {
         {/* Brand Header */}
         <div className="text-center space-y-2">
           <div className="w-16 h-16 rounded-full overflow-hidden border border-accent/40 mx-auto bg-surface shadow-md">
-            <img src="/logo.jpeg" alt="TanVi Logo" className="w-full h-full object-cover scale-105" />
+            <img src="/logo.jpeg" alt="TenVa Logo" className="w-full h-full object-cover scale-105" />
           </div>
           <h2 className="font-cormorant text-3xl font-bold tracking-widest bg-gradient-to-r from-text-ivory to-accent bg-clip-text text-transparent">
-            TANVI
+            tenva
           </h2>
           <p className="text-[10px] tracking-widest text-text-ivory/50 uppercase">Where Crystal Meets Soul</p>
         </div>
@@ -215,7 +215,7 @@ function SignUpContent() {
               <Link href="/policies/terms" className="text-accent hover:underline">
                 Terms & Conditions
               </Link>{" "}
-              and Privacy Policy of TanVi.
+              and Privacy Policy of TenVa.
             </label>
           </div>
 

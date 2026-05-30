@@ -29,7 +29,7 @@ export function generateWhatsAppLink(
     
   const fullAddress = `${address.street}, ${address.city}, ${address.state} - ${address.pincode}`;
 
-  const message = `🛍️ New Order from TanVi!\n\nCustomer: ${customerName}\nPhone: ${customerPhone}\nItems:\n${itemsText}\n\nTotal: ₹${totalAmount}\nAddress: ${fullAddress}\n\nPlease confirm this order.`;
+  const message = `🛍️ New Order from TenVa!\n\nCustomer: ${customerName}\nPhone: ${customerPhone}\nItems:\n${itemsText}\n\nTotal: ₹${totalAmount}\nAddress: ${fullAddress}\n\nPlease confirm this order.`;
 
   // Clean the phone number (remove +, spaces, dashes, etc.)
   const cleanNumber = adminPhone.replace(/\D/g, "");
@@ -38,7 +38,7 @@ export function generateWhatsAppLink(
 }
 
 export function generateSupportWhatsAppLink(adminPhone: string, orderId: string): string {
-  const message = `Hello TanVi support, I need assistance with my Order ID: ${orderId}.`;
+  const message = `Hello TenVa support, I need assistance with my Order ID: ${orderId}.`;
   const cleanNumber = adminPhone.replace(/\D/g, "");
   return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
 }

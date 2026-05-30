@@ -49,7 +49,7 @@ export default function AuthModal({ isOpen, onClose, callbackUrl = "/collections
           Authentication Required
         </h3>
         <p className="font-dm-sans text-xs text-text-ivory/60 leading-relaxed mb-6">
-          To complete your crystal checkout and confirm your order details via WhatsApp, please sign in or register an account with TanVi.
+          To complete your crystal checkout and confirm your order details via WhatsApp, please sign in or register an account with TenVa.
         </p>
 
         <div className="space-y-3">

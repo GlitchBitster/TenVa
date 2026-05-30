@@ -21,7 +21,7 @@ export default function CountdownTimer() {
   useEffect(() => {
     // Generate a target date that is always 3 days, 12 hours into the future from first load
     // in order to keep the mock countdown visually active.
-    let targetTime = localStorage.getItem("tanvi_sale_target");
+    let targetTime = localStorage.getItem("tenva_sale_target");
     let targetDate: Date;
 
     if (targetTime) {
@@ -29,11 +29,11 @@ export default function CountdownTimer() {
       // If the target date has passed, reset it to 3 days in the future
       if (targetDate.getTime() - new Date().getTime() < 0) {
         targetDate = new Date(new Date().getTime() + 3.5 * 24 * 60 * 60 * 1000);
-        localStorage.setItem("tanvi_sale_target", targetDate.getTime().toString());
+        localStorage.setItem("tenva_sale_target", targetDate.getTime().toString());
       }
     } else {
       targetDate = new Date(new Date().getTime() + 3.5 * 24 * 60 * 60 * 1000); // 3.5 days from now
-      localStorage.setItem("tanvi_sale_target", targetDate.getTime().toString());
+      localStorage.setItem("tenva_sale_target", targetDate.getTime().toString());
     }
 
     const calculateTimeLeft = () => {

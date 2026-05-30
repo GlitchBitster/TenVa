@@ -259,7 +259,7 @@ export default function AdminDashboard() {
         {/* Title */}
         <div className="space-y-1">
           <span className="text-[10px] tracking-widest uppercase text-accent font-semibold">Admin Panel</span>
-          <h1 className="font-cormorant text-4xl md:text-5xl text-text-ivory font-medium">TanVi Dashboard</h1>
+          <h1 className="font-cormorant text-4xl md:text-5xl text-text-ivory font-medium">TenVa Dashboard</h1>
           <p className="text-xs text-text-ivory/60">Oversee store performance, manage product listings, track order statuses, and verify clients.</p>
         </div>
 

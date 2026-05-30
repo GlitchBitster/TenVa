@@ -95,7 +95,7 @@ export default function HomePage() {
 
         <div className="relative z-20 max-w-3xl space-y-6 flex flex-col items-center">
           <span className="font-dm-sans text-xs md:text-sm tracking-[0.3em] uppercase text-accent font-semibold animate-fade-up">
-            TanVi Crystal Collection
+            TenVa Crystal Collection
           </span>
           
           <h1 className="font-cormorant text-5xl md:text-7xl font-bold tracking-wide text-text-ivory leading-tight select-none">
@@ -251,7 +251,7 @@ export default function HomePage() {
             {/* Elegant Serif Watermark Logo */}
             <div className="relative z-10 text-center select-none space-y-4">
               <span className="font-cormorant italic text-7xl md:text-9xl text-accent/25 block">T</span>
-              <span className="font-dm-sans text-[10px] tracking-[0.3em] uppercase text-text-ivory/40">TanVi Craft</span>
+              <span className="font-dm-sans text-[10px] tracking-[0.3em] uppercase text-text-ivory/40">TenVa Craft</span>
             </div>
           </div>
 
@@ -262,7 +262,7 @@ export default function HomePage() {
               Where Crystal Energy Meets Elegant Luxury
             </h2>
             <p className="font-dm-sans text-sm md:text-base text-text-ivory/70 leading-relaxed">
-              At TanVi, we believe that crystals are more than just beautiful ornaments. They are ancient energy conduits, grounding templates of light, and daily reminders of our connection to the Earth and our inner soul.
+              At TenVa, we believe that crystals are more than just beautiful ornaments. They are ancient energy conduits, grounding templates of light, and daily reminders of our connection to the Earth and our inner soul.
             </p>
             <p className="font-dm-sans text-sm md:text-base text-text-ivory/70 leading-relaxed">
               Every ring, bracelet, necklace, and healing stone in our collection is hand-selected and ethically sourced. We carefully examine each specimen for purity, clarity, and vibrational alignment, ensuring that the piece that finds you is truly meant for your journey.

@@ -38,7 +38,7 @@ export default function WishlistPage() {
   useEffect(() => {
     const syncLocalWishlist = async () => {
       if (session) {
-        const local = localStorage.getItem("tanvi_wishlist");
+        const local = localStorage.getItem("tenva_wishlist");
         if (local) {
           try {
             const ids = JSON.parse(local);
@@ -52,7 +52,7 @@ export default function WishlistPage() {
                 });
               }
               // Clear local wishlist once synced
-              localStorage.removeItem("tanvi_wishlist");
+              localStorage.removeItem("tenva_wishlist");
               window.dispatchEvent(new Event("wishlist-updated"));
               toast.success("Synced your guest wishlist!");
             }
@@ -63,7 +63,7 @@ export default function WishlistPage() {
         fetchWishlist();
       } else {
         // Fallback for guest (in case middleware redirection is disabled or during transition)
-        const local = localStorage.getItem("tanvi_wishlist");
+        const local = localStorage.getItem("tenva_wishlist");
         if (local) {
           try {
             const ids = JSON.parse(local);

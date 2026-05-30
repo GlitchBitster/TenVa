@@ -46,13 +46,13 @@ export async function POST(req: Request) {
         });
 
         await transporter.sendMail({
-          from: `"TanVi Crystals" <${smtpUser}>`,
+          from: `"TenVa Crystals" <${smtpUser}>`,
           to: target,
-          subject: "TanVi Magic Login Code",
-          text: `Your TanVi Magic Sign In OTP is: ${otpCode}. It is valid for 5 minutes.`,
+          subject: "TenVa Magic Login Code",
+          text: `Your TenVa Magic Sign In OTP is: ${otpCode}. It is valid for 5 minutes.`,
           html: `
             <div style="font-family: Arial, sans-serif; background-color: #0D0A1A; color: #F5F0FF; padding: 40px; text-align: center; border-radius: 12px; max-width: 500px; margin: 0 auto; border: 1px solid rgba(107, 33, 168, 0.3);">
-              <h2 style="color: #D4AF7A; font-size: 24px; margin-bottom: 20px;">TanVi Crystals</h2>
+              <h2 style="color: #D4AF7A; font-size: 24px; margin-bottom: 20px;">TenVa Crystals</h2>
               <p style="font-size: 16px; margin-bottom: 30px; color: #A0A0A8;">Use the verification code below to complete your sign-in. This code is valid for 5 minutes.</p>
               <div style="background-color: #1A1028; border: 1px solid #6B21A8; border-radius: 8px; padding: 15px 30px; font-size: 32px; font-weight: bold; color: #F5F0FF; letter-spacing: 5px; display: inline-block; margin-bottom: 30px;">
                 ${otpCode}

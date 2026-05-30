@@ -30,7 +30,7 @@ export default function WishlistDrawer({ isOpen, onClose, onOrderNow }: Wishlist
       }
     } else {
       // LocalStorage for guests
-      const local = localStorage.getItem("tanvi_wishlist");
+      const local = localStorage.getItem("tenva_wishlist");
       if (local) {
         try {
           const ids = JSON.parse(local);
@@ -80,12 +80,12 @@ export default function WishlistDrawer({ isOpen, onClose, onOrderNow }: Wishlist
         console.error(err);
       }
     } else {
-      const local = localStorage.getItem("tanvi_wishlist");
+      const local = localStorage.getItem("tenva_wishlist");
       if (local) {
         try {
           const list = JSON.parse(local);
           const filtered = list.filter((id: string) => id !== productId);
-          localStorage.setItem("tanvi_wishlist", JSON.stringify(filtered));
+          localStorage.setItem("tenva_wishlist", JSON.stringify(filtered));
           toast.success("Removed from wishlist");
           fetchWishlist();
           window.dispatchEvent(new Event("wishlist-updated"));

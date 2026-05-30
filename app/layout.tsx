@@ -18,7 +18,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "TanVi | Crystal Ornaments & Healing Stones",
+  title: "TenVa | Crystal Ornaments & Healing Stones",
   description: "Where Crystal Meets Soul. Discover handpicked crystal rings, bracelets, necklaces, and raw healing stones designed for your spiritual journey.",
 };
 

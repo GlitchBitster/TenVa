@@ -17,13 +17,13 @@ export async function GET(req: Request) {
 
     if (category && category !== "all") {
       query.category = category.toLowerCase().slice(0, -1); // e.g. 'rings' -> 'ring'
-      if (category === "stones") {
+      if (category === "stone") {
         query.category = "stone";
-      } else if (category === "bracelets") {
+      } else if (category === "bracelet") {
         query.category = "bracelet";
-      } else if (category === "necklaces") {
+      } else if (category === "necklace") {
         query.category = "necklace";
-      } else if (category === "rings") {
+      } else if (category === "ring") {
         query.category = "ring";
       }
     }

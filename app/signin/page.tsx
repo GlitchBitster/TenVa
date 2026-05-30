@@ -43,7 +43,7 @@ function SignInContent() {
       if (res?.error) {
         toast.error("Invalid email or password");
       } else {
-        toast.success("Welcome back to TanVi!");
+        toast.success("Welcome back to TenVa!");
         router.push(callbackUrl);
         router.refresh();
       }
@@ -143,10 +143,10 @@ function SignInContent() {
         {/* Brand Header */}
         <div className="text-center space-y-2">
           <div className="w-16 h-16 rounded-full overflow-hidden border border-accent/40 mx-auto bg-surface shadow-md">
-            <img src="/logo.jpeg" alt="TanVi Logo" className="w-full h-full object-cover scale-105" />
+            <img src="/logo.jpeg" alt="TenVa Logo" className="w-full h-full object-cover scale-105" />
           </div>
           <h2 className="font-cormorant text-3xl font-bold tracking-widest bg-gradient-to-r from-text-ivory to-accent bg-clip-text text-transparent">
-            TANVI
+            tenva
           </h2>
           <p className="text-[10px] tracking-widest text-text-ivory/50 uppercase">Where Crystal Meets Soul</p>
         </div>

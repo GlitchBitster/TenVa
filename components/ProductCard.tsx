@@ -41,7 +41,7 @@ export default function ProductCard({ product, onOrderNow }: ProductCardProps) {
           console.error(err);
         }
       } else {
-        const local = localStorage.getItem("tanvi_wishlist");
+        const local = localStorage.getItem("tenva_wishlist");
         if (local) {
           try {
             const list = JSON.parse(local);
@@ -87,7 +87,7 @@ export default function ProductCard({ product, onOrderNow }: ProductCardProps) {
     } else {
       // LocalStorage for guests
       let list: string[] = [];
-      const local = localStorage.getItem("tanvi_wishlist");
+      const local = localStorage.getItem("tenva_wishlist");
       if (local) {
         try {
           list = JSON.parse(local);
@@ -105,7 +105,7 @@ export default function ProductCard({ product, onOrderNow }: ProductCardProps) {
         added = true;
       }
 
-      localStorage.setItem("tanvi_wishlist", JSON.stringify(list));
+      localStorage.setItem("tenva_wishlist", JSON.stringify(list));
       setIsWishlisted(added);
       toast.success(added ? "Added to wishlist (local)!" : "Removed from wishlist");
       window.dispatchEvent(new Event("wishlist-updated"));
@@ -174,7 +174,7 @@ export default function ProductCard({ product, onOrderNow }: ProductCardProps) {
             </span>
             <div className="w-16 h-1px bg-accent/20 my-2" />
             <span className="font-dm-sans text-[10px] tracking-widest uppercase text-text-ivory/40">
-              TanVi Crystals
+              TenVa Crystals
             </span>
           </div>
         )}

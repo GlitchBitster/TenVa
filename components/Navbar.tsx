@@ -29,7 +29,7 @@ export default function Navbar() {
       }
     } else {
       // LocalStorage for guests
-      const local = localStorage.getItem("tanvi_wishlist");
+      const local = localStorage.getItem("tenva_wishlist");
       if (local) {
         try {
           const parsed = JSON.parse(local);
@@ -101,12 +101,12 @@ export default function Navbar() {
             <div className="w-9 h-9 rounded-full overflow-hidden border border-accent/40 group-hover:border-accent transition-smooth relative bg-surface">
               <img
                 src="/logo.jpeg"
-                alt="TanVi Logo"
+                alt="TenVa Logo"
                 className="w-full h-full object-cover scale-105"
               />
             </div>
             <span className="font-cormorant text-2xl tracking-widest font-semibold bg-gradient-to-r from-text-ivory to-accent bg-clip-text text-transparent group-hover:opacity-90 transition-smooth">
-              TANVI
+              tenva
             </span>
           </Link>
         </div>
@@ -229,7 +229,7 @@ export default function Navbar() {
                   <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
                 </div>
                 <span className="font-cormorant text-xl tracking-widest font-semibold bg-gradient-to-r from-text-ivory to-accent bg-clip-text text-transparent">
-                  TANVI
+                  tenva
                 </span>
               </div>
               <button onClick={() => setIsDrawerOpen(false)} className="text-text-ivory hover:text-accent">

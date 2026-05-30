@@ -17,7 +17,7 @@ export async function POST(req: Request) {
 
     // Upload to Cloudinary
     const uploadRes = await cloudinary.uploader.upload(file, {
-      folder: "tanvi_products",
+      folder: "tenva_products",
     });
 
     return NextResponse.json({ url: uploadRes.secure_url });

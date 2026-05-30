@@ -10,10 +10,10 @@ export default function Footer() {
         <div className="space-y-4">
           <Link href="/" className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full overflow-hidden border border-accent/40 bg-surface">
-              <img src="/logo.jpeg" alt="TanVi Logo" className="w-full h-full object-cover" />
+              <img src="/logo.jpeg" alt="TenVa Logo" className="w-full h-full object-cover" />
             </div>
             <span className="font-cormorant text-2xl tracking-widest font-semibold bg-gradient-to-r from-text-ivory to-accent bg-clip-text text-transparent">
-              TANVI
+              tenva
             </span>
           </Link>
           <p className="font-dm-sans text-sm text-text-ivory/60 leading-relaxed max-w-sm">
@@ -126,7 +126,7 @@ export default function Footer() {
 
       {/* Bottom Bar: Copyright and Payment Gateways */}
       <div className="max-w-7xl mx-auto border-t border-primary/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-text-ivory/50">
-        <p>&copy; {new Date().getFullYear()} TanVi Crystals. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} TenVa Crystals. All rights reserved.</p>
         
         {/* Payment Gateways */}
         <div className="flex items-center gap-3 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-smooth">
