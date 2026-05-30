@@ -20,6 +20,9 @@
     "react-dom": "19.2.4",
     "react-hot-toast": "^2.6.0"
   },
+  "overrides": {
+    "nodemailer": "^8.0.9"
+  },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/bcryptjs": "^2.4.6",
