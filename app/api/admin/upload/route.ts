@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import cloudinary from "@/lib/cloudinary";
+import logger from "@/lib/logger";
 
 export async function POST(req: Request) {
   try {
@@ -22,7 +23,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ url: uploadRes.secure_url });
   } catch (error: any) {
-    console.error("Cloudinary Upload Endpoint Error:", error);
+    logger.error("Cloudinary Upload Endpoint Error", error);
     return NextResponse.json({ error: error.message || "Failed to upload image to Cloudinary" }, { status: 500 });
   }
 }

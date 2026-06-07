@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import Otp from "@/models/Otp";
+import logger from "@/lib/logger";
 
 export async function POST(req: Request) {
   try {
@@ -24,7 +25,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true, message: "OTP verified successfully" });
   } catch (error: any) {
-    console.error("Error in OTP verify route:", error);
+    logger.error("OTP verify route Error", error);
     return NextResponse.json({ error: error.message || "Failed to verify OTP" }, { status: 500 });
   }
 }

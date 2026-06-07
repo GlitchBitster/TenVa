@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import Otp from "@/models/Otp";
 import nodemailer from "nodemailer";
+import logger from "@/lib/logger";
 
 export async function POST(req: Request) {
   try {
@@ -61,7 +62,7 @@ export async function POST(req: Request) {
             </div>
           `,
         });
-        console.log(`[SMTP] Sent OTP ${otpCode} to ${target}`);
+        logger.info(`[SMTP] Sent OTP to ${target}`);
       } else {
         // Local fallback log
         console.log(`\n---------------------------------------------\n[LOCAL DEV] OTP Generated for ${target}: ${otpCode}\n---------------------------------------------\n`);
@@ -89,7 +90,7 @@ export async function POST(req: Request) {
           const result = await res.json();
           console.log("[MSG91 SMS] Sent SMS response:", result);
         } catch (smsError) {
-          console.error("[SMS ERROR] Failed to send SMS via MSG91:", smsError);
+          logger.error("[SMS] Failed to send SMS via MSG91", smsError);
         }
       } else {
         // Local fallback log
@@ -99,7 +100,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true, message: "OTP sent successfully" });
   } catch (error: any) {
-    console.error("Error in OTP send route:", error);
+    logger.error("OTP send route Error", error);
     return NextResponse.json({ error: error.message || "Failed to send OTP" }, { status: 500 });
   }
 }

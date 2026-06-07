@@ -3,6 +3,7 @@ import connectDB from "@/lib/mongodb";
 import Order from "@/models/Order";
 import Product from "@/models/Product";
 import { auth } from "@/lib/auth";
+import logger from "@/lib/logger";
 
 // GET user orders or all orders (if Admin)
 export async function GET() {
@@ -25,7 +26,7 @@ export async function GET() {
 
     return NextResponse.json(orders);
   } catch (error: any) {
-    console.error("GET Orders Error:", error);
+    logger.error("GET Orders Error", error);
     return NextResponse.json({ error: error.message || "Failed to fetch orders" }, { status: 500 });
   }
 }
@@ -65,7 +66,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(order, { status: 201 });
   } catch (error: any) {
-    console.error("POST Order Error:", error);
+    logger.error("POST Order Error", error);
     return NextResponse.json({ error: error.message || "Failed to create order" }, { status: 500 });
   }
 }

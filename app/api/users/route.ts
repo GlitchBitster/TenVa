@@ -3,6 +3,7 @@ import connectDB from "@/lib/mongodb";
 import User from "@/models/User";
 import { auth } from "@/lib/auth";
 import bcrypt from "bcryptjs";
+import logger from "@/lib/logger";
 
 // GET all users (Admin only)
 export async function GET() {
@@ -16,7 +17,7 @@ export async function GET() {
     const users = await User.find({}).sort({ createdAt: -1 }).select("-passwordHash");
     return NextResponse.json(users);
   } catch (error: any) {
-    console.error("GET Users Error:", error);
+    logger.error("GET Users Error", error);
     return NextResponse.json({ error: error.message || "Failed to fetch users" }, { status: 500 });
   }
 }
@@ -60,7 +61,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(userObj, { status: 201 });
   } catch (error: any) {
-    console.error("POST User Register Error:", error);
+    logger.error("POST User Register Error", error);
     return NextResponse.json({ error: error.message || "Failed to register user" }, { status: 500 });
   }
 }
@@ -107,7 +108,7 @@ export async function PUT(req: Request) {
 
     return NextResponse.json(updatedUser);
   } catch (error: any) {
-    console.error("PUT User Error:", error);
+    logger.error("PUT User Error", error);
     return NextResponse.json({ error: error.message || "Failed to update profile" }, { status: 500 });
   }
 }

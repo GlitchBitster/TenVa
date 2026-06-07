@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import Product from "@/models/Product";
 import { auth } from "@/lib/auth";
+import logger from "@/lib/logger";
 
 // GET all products or filter/sort
 export async function GET(req: Request) {
@@ -48,7 +49,7 @@ export async function GET(req: Request) {
     const products = await Product.find(query).sort(sortOption);
     return NextResponse.json(products);
   } catch (error: any) {
-    console.error("GET Products Error:", error);
+    logger.error("GET Products Error", error);
     return NextResponse.json({ error: error.message || "Failed to fetch products" }, { status: 500 });
   }
 }
@@ -96,7 +97,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(product, { status: 201 });
   } catch (error: any) {
-    console.error("POST Product Error:", error);
+    logger.error("POST Product Error", error);
     return NextResponse.json({ error: error.message || "Failed to create product" }, { status: 500 });
   }
 }
@@ -124,7 +125,7 @@ export async function PUT(req: Request) {
 
     return NextResponse.json(product);
   } catch (error: any) {
-    console.error("PUT Product Error:", error);
+    logger.error("PUT Product Error", error);
     return NextResponse.json({ error: error.message || "Failed to update product" }, { status: 500 });
   }
 }
@@ -152,7 +153,7 @@ export async function DELETE(req: Request) {
 
     return NextResponse.json({ success: true, message: "Product deleted successfully" });
   } catch (error: any) {
-    console.error("DELETE Product Error:", error);
+    logger.error("DELETE Product Error", error);
     return NextResponse.json({ error: error.message || "Failed to delete product" }, { status: 500 });
   }
 }

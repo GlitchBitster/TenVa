@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import Product from "@/models/Product";
+import logger from "@/lib/logger";
 
 const sampleProducts = [
   {
@@ -159,7 +160,7 @@ export async function GET() {
       products: seeded,
     });
   } catch (error: any) {
-    console.error("Database Seeding Error:", error);
+    logger.error("Database Seeding Error", error);
     return NextResponse.json({
       success: false,
       error: error.message || "Failed to seed database",

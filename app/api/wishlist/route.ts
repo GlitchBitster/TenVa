@@ -3,6 +3,7 @@ import connectDB from "@/lib/mongodb";
 import User from "@/models/User";
 import { auth } from "@/lib/auth";
 import mongoose from "mongoose";
+import logger from "@/lib/logger";
 
 // GET user's wishlist with populated product details
 export async function GET() {
@@ -21,7 +22,7 @@ export async function GET() {
 
     return NextResponse.json(user.wishlist || []);
   } catch (error: any) {
-    console.error("GET Wishlist Error:", error);
+    logger.error("GET Wishlist Error", error);
     return NextResponse.json({ error: error.message || "Failed to fetch wishlist" }, { status: 500 });
   }
 }
@@ -62,7 +63,7 @@ export async function POST(req: Request) {
     await user.save();
     return NextResponse.json({ success: true, isAdded, wishlist: user.wishlist });
   } catch (error: any) {
-    console.error("POST Wishlist Error:", error);
+    logger.error("POST Wishlist Error", error);
     return NextResponse.json({ error: error.message || "Failed to update wishlist" }, { status: 500 });
   }
 }

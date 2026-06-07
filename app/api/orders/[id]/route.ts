@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import Order from "@/models/Order";
 import { auth } from "@/lib/auth";
+import logger from "@/lib/logger";
 
 // GET order details by ID
 export async function GET(
@@ -29,7 +30,7 @@ export async function GET(
 
     return NextResponse.json(order);
   } catch (error: any) {
-    console.error("GET Order Detail Error:", error);
+    logger.error("GET Order Detail Error", error);
     return NextResponse.json({ error: error.message || "Failed to fetch order details" }, { status: 500 });
   }
 }
@@ -82,7 +83,7 @@ export async function PATCH(
 
     return NextResponse.json(updatedOrder);
   } catch (error: any) {
-    console.error("PATCH Order Detail Error:", error);
+    logger.error("PATCH Order Detail Error", error);
     return NextResponse.json({ error: error.message || "Failed to update order" }, { status: 500 });
   }
 }
